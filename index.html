@@ -1,154 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Resume — Your Name</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gnanadeep | Portfolio</title>
   <style>
-    :root{
-      --accent:#0066cc;
-      --muted:#6b7280;
-      --bg:#f7f9fc;
-      --card:#ffffff;
-      --glass: rgba(255,255,255,0.6);
-      --radius:12px;
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    /* Global Styles */
+    :root {
+      --primary-color: #4CAF50;
+      --bg-light: #ffffff;
+      --bg-dark: #121212;
+      --text-light: #ffffff;
+      --text-dark: #333333;
+      --card-light: #f5f5f5;
+      --card-dark: #1e1e1e;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:var(--bg);color:#0f172a}
-
-    .container{max-width:1000px;margin:28px auto;padding:24px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.9), var(--card));border-radius:var(--radius);box-shadow:0 6px 20px rgba(15,23,42,0.08);display:flex;gap:24px;overflow:hidden}
-
-    /* Left column */
-    .left{width:320px;padding:28px;background:linear-gradient(180deg,var(--glass),rgba(255,255,255,0.9));border-right:1px solid rgba(15,23,42,0.04)}
-    .photo{width:110px;height:110px;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,var(--accent),#00aaff);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:22px}
-    h1{margin:8px 0 4px;font-size:22px}
-    h2{margin:6px 0;color:var(--accent);font-size:14px}
-    .contact{margin-top:16px;font-size:14px;color:var(--muted);line-height:1.55}
-    .section-title{margin-top:22px;margin-bottom:8px;font-weight:700;font-size:13px;color:#111827}
-    .pill{display:inline-block;padding:6px 8px;border-radius:999px;background:#eef2ff;color:#1e3a8a;font-weight:600;font-size:12px;margin:6px 6px 0 0}
-    .skill{margin:6px 0}
-    .skill .bar{height:8px;background:#e6eefc;border-radius:999px;overflow:hidden}
-    .skill .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#00aaff)}
-
-    /* Right column */
-    .right{flex:1;padding:28px}
-    .meta{display:flex;align-items:center;justify-content:space-between}
-    .summary{margin-top:8px;color:#334155}
-    .experience-item{margin-top:14px}
-    .muted{color:var(--muted)}
-    .role{font-weight:700}
-    .company{font-weight:600;color:var(--accent)}
-    .dates{float:right;color:var(--muted);font-size:13px}
-
-    /* Responsive */
-    @media (max-width:880px){
-      .card{flex-direction:column}
-      .left{width:auto;border-right:none;border-bottom:1px solid rgba(15,23,42,0.04)}
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.light {
+      background: var(--bg-light);
+      color: var(--text-dark);
+    }
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-light);
     }
 
-    /* Print friendly */
-    @media print{
-      body{background:white}
-      .container{max-width:760px;padding:0}
-      .card{box-shadow:none}
-      .left{background:transparent}
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: var(--primary-color);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav h1 {
+      margin: 0;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #000;
+    }
+    .theme-toggle {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .card {
+      background: var(--card-light);
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 12px;
+      max-width: 600px;
+      transition: background 0.3s;
+    }
+    body.dark .card {
+      background: var(--card-dark);
+    }
+
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    .skills span {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 8px 12px;
+      margin: 5px;
+      border-radius: 6px;
+    }
+    footer {
+      padding: 20px;
+      text-align: center;
+      background: var(--primary-color);
+      color: white;
+      margin-top: 40px;
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <div class="card" role="document">
-      <aside class="left" aria-label="sidebar">
-        <div style="display:flex;gap:16px;align-items:center">
-          <div class="photo">YO</div>
-          <div>
-            <h1>First Last</h1>
-            <h2>Frontend Developer • MERN Stack</h2>
-            <div class="muted" style="font-size:13px;margin-top:6px">Location — City, Country</div>
-          </div>
-        </div>
+<body class="light">
+  <!-- Navbar -->
+  <nav>
+    <h1>Portfolio</h1>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
+  </nav>
 
-        <div class="contact">
-          <div><strong>Email:</strong> gnanadeepuritila@gmail.com</div>
-          <div><strong>Phone:</strong> +91 9182611226</div>
-          <div><strong>Website / GitHub:</strong> github.com/yourhandle</div>
-          <div><strong>LinkedIn:</strong> linkedin.com/in/yourhandle</div>
-        </div>
-
-        <div class="section-title">Skills</div>
-        <div class="skill"><div style="font-weight:600">HTML, CSS, JavaScript</div>
-          <div class="bar" style="margin-top:6px"><i style="width:95%"></i></div>
-        </div>
-        <div class="skill"><div style="font-weight:600">React, Node.js, Express</div>
-          <div class="bar" style="margin-top:6px"><i style="width:85%"></i></div>
-        </div>
-        <div class="skill"><div style="font-weight:600">MongoDB, REST APIs</div>
-          <div class="bar" style="margin-top:6px"><i style="width:78%"></i></div>
-        </div>
-
-        <div class="section-title">Languages</div>
-        <div class="pill">English — Professional</div>
-        <div class="pill">Tamil — Native</div>
-        <div class="pill">Hindi — Conversational</div>
-
-        <div class="section-title">Education</div>
-        <div style="font-weight:700">B.Sc. Computer Science</div>
-        <div class="muted">University Name — 2021</div>
-
-        <div class="section-title">Awards</div>
-        <div class="muted">Top project award — College Hackathon 2023</div>
-
-      </aside>
-
-      <main class="right" aria-label="main resume content">
-        <div class="meta">
-          <div style="font-size:14px;font-weight:700">Profile</div>
-          <div class="muted">Updated: Sep 10, 2025</div>
-        </div>
-
-        <div class="summary">A focused frontend / full-stack developer with 1+ years of experience building responsive, accessible web apps using modern JavaScript, React and Node.js. Passionate about writing clean code, optimizing user experience and learning new technologies.</div>
-
-        <div class="section-title">Experience</div>
-
-        <div class="experience-item">
-          <div>
-            <span class="role">Frontend Developer</span> — <span class="company">Acme Tech</span>
-            <span class="dates">Apr 2024 — Present</span>
-          </div>
-          <div class="muted">Building single-page applications with React, integrating REST APIs, improving performance by 30% and mentoring two interns.</div>
-        </div>
-
-        <div class="experience-item">
-          <div>
-            <span class="role">Web Developer (Intern)</span> — <span class="company">Startup XYZ</span>
-            <span class="dates">Jun 2023 — Mar 2024</span>
-          </div>
-          <div class="muted">Worked on MERN stack features, implemented authentication flows, and wrote unit tests for critical components.</div>
-        </div>
-
-        <div class="section-title">Projects</div>
-        <div style="margin-top:8px">
-          <div style="font-weight:700">Project Name — A short tagline</div>
-          <div class="muted">• Built with React, Node, MongoDB. Features: auth, CRUD, responsive UI. Deployed on Netlify / Heroku.</div>
-
-          <div style="margin-top:10px;font-weight:700">Portfolio Website</div>
-          <div class="muted">• Personal site to showcase projects and blog. Implemented animations, SEO basics and contact form.</div>
-        </div>
-
-        <div class="section-title">Education & Certifications</div>
-        <div style="margin-top:8px">
-          <div style="font-weight:700">Full Stack Web Development — Online Bootcamp</div>
-          <div class="muted">• Completed: 2022 — Certificate available on request</div>
-        </div>
-
-        <div class="section-title">Interests</div>
-        <div class="muted">Open-source, UI/UX design, competitive coding, photography</div>
-
-        <div style="margin-top:24px;font-size:13px;color:var(--muted);">References available on request.</div>
-      </main>
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="card">
+      <p>I am <b>Gnanadeep Urtia</b>, a proactive and organized student pursuing <b>Bachelor of Computer Applications</b>.  
+      I am passionate about teamwork, decision-making, and learning new technologies to enhance my career.</p>
     </div>
-  </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="card skills">
+      <span>C</span>
+      <span>Python</span>
+      <span>Java</span>
+      <span>MS Office</span>
+      <span>Type Writing</span>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="card">
+      <p><b>Aditya Degree College</b><br>Bachelor of Computer Applications (2023 - 2026)</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+      <p>Email: <a href="mailto:gnandeepuritila@gmail.com">gnandeepuritila@gmail.com</a></p>
+      <p>Phone: <a href="tel:9182611226">9182611226</a></p>
+      <p>Location: Visakhapatnam, India</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Gnanadeep Portfolio | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const button = document.querySelector('.theme-toggle');
+      if (body.classList.contains('light')) {
+        body.classList.replace('light', 'dark');
+        button.textContent = "☀️ Light";
+      } else {
+        body.classList.replace('dark', 'light');
+        button.textContent = "🌙 Dark";
+      }
+    }
+  </script>
 </body>
 </html>
